@@ -17,8 +17,8 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    // Use name from entry
-    filename: '[name].js'
+    // Use name from entry plus chunkhash
+    filename: '[name].[chunkhash].js'
   },
   module: {
     rules: [
@@ -36,7 +36,8 @@ module.exports = {
   plugins: [
     // Eliminate duplicate code in bundles
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
+      //
+      names: ['vendor', 'manifest']
     }),
     // Handle script tags for bundle files
     new HtmlWebpackPlugin({

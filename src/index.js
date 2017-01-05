@@ -20,3 +20,4 @@ const App = () => {
 };
 
 ReactDOM.render(<App />, document.getElementById('root'));
+console.log('Minor change to trigger rebuild of module');
