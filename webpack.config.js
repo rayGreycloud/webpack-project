@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 // Specify vendor dependencies
 const VENDOR_LIBS = [
   'faker', 'lodash', 'react', 'react-dom',
@@ -35,6 +37,10 @@ module.exports = {
     // Eliminate duplicate code in bundles
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor'
+    }),
+    // Handle script tags for bundle files
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
     })
   ]
 };
