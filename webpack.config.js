@@ -22,6 +22,7 @@ module.exports = {
   },
   module: {
     rules: [
+
       {
         use: 'babel-loader',
         test: /\.js$/,
@@ -42,6 +43,10 @@ module.exports = {
     // Handle script tags for bundle files
     new HtmlWebpackPlugin({
       template: 'src/index.html'
+    }),
+    // Added for deployment - window scoped variable
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
 };
